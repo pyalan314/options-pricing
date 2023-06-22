@@ -1,0 +1,5 @@
+0.28367		# mean reversion rate
+0.893284	# long term vol
+0.622581	# vol of vol
+-0.678762	# corr between stock price and vol
+0.667501	# initial vol

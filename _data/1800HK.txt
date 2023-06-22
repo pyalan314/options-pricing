@@ -1,0 +1,5 @@
+22.75		#initial spot price
+23.3		#price on issue day
+0.014321	# costant drift
+0		# dividend
+0.502712	# constant vol
