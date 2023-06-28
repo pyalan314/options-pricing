@@ -64,12 +64,11 @@ public class DataProcessor {
         return (short) temp;
     }
     public void load(String s) {
-        try {
             String str;
             StringTokenizer st;
             File f = new File(s);
-            InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
-            BufferedReader breader = new BufferedReader (read);
+        try(InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
+            BufferedReader breader = new BufferedReader (read);) {
             while((str = breader.readLine()) != null) {
                 datapair tempdata = new datapair();
                 st = new StringTokenizer(str, "\t", false);
@@ -81,13 +80,12 @@ public class DataProcessor {
     }
     public String[] loadmdate(String s) {
         String[] temp = new String[4];
-        try {
-            short i = 0;
-            String str;
-            StringTokenizer st;
-            File f = new File(s);
-            InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
-            BufferedReader breader = new BufferedReader (read);
+        short i = 0;
+        String str;
+        StringTokenizer st;
+        File f = new File(s);
+        try(InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
+            BufferedReader breader = new BufferedReader (read);) {
             while((str = breader.readLine()) != null) {
                 st = new StringTokenizer(str, "\t", false);
                 temp[i++] = st.nextToken();
@@ -97,12 +95,11 @@ public class DataProcessor {
     }
     public Vector loadddate(String s) {
         Vector tempV = new Vector();
-        try {
-            String str;
-            StringTokenizer st;
-            File f = new File(s);
-            InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
-            BufferedReader breader = new BufferedReader (read);
+        String str;
+        StringTokenizer st;
+        File f = new File(s);
+        try(InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
+            BufferedReader breader = new BufferedReader (read)) {
             while((str = breader.readLine()) != null) {
                 st = new StringTokenizer(str, "\t", false);
                 String[] temp = new String[3];
@@ -116,12 +113,11 @@ public class DataProcessor {
     }
     public Vector loadcdate(String s) {
         Vector tempV = new Vector();
-        try {
-            String str;
-            StringTokenizer st;
-            File f = new File(s);
-            InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
-            BufferedReader breader = new BufferedReader (read);
+        String str;
+        StringTokenizer st;
+        File f = new File(s);
+        try (InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
+            BufferedReader breader = new BufferedReader (read);) {
             while((str = breader.readLine()) != null) {
                 String[] temp = new String[2];
                 st = new StringTokenizer(str, "\t", false);
@@ -134,13 +130,11 @@ public class DataProcessor {
     }
     public float[] loadfloat(String s) {
         Vector tempV = new Vector();
-        try {
-            short i = 0;
-            String str;
-            StringTokenizer st;
-            File f = new File(s);
-            InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
-            BufferedReader breader = new BufferedReader (read);
+        String str;
+        StringTokenizer st;
+        File f = new File(s);
+        try(InputStreamReader read = new InputStreamReader (new FileInputStream(f),"UTF-8");
+            BufferedReader breader = new BufferedReader (read);) {
             while((str = breader.readLine()) != null) {
                 st = new StringTokenizer(str, "\t", false);
                 tempV.add(Float.parseFloat(st.nextToken()));
