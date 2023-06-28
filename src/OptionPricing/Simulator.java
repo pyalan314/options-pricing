@@ -29,7 +29,9 @@ class Simulator {
     private Vector<String[]> ddate, cdate;
     private Vector<String> output, output2;
     private Random gen;
-    public Simulator (Item arg[]) {
+    public Simulator () {
+    }
+    public void compute(Item arg[]){
         mydp = new DataProcessor(arg[0].getText());
         readInData(arg);
         initialize();
@@ -45,18 +47,6 @@ class Simulator {
         mydp.save(output2, "_output\\withoutcall.txt");
         mydp.save(minST, isp, "_output\\minST.txt");
         mydp.save(maxST, isp, "_output\\maxST.txt");
-        /*initialize();
-        set0rate();
-        for(short a=1; a<=N; a++) {
-             for(short n=0; n<10000; n++) {
-                payoff(HES());
-             }
-             System.out.println(a+"0000 generated");
-        }
-        mydp.save(output, "output_req0_withcall.txt");
-        mydp.save(output2, "output_req0_withoutcall.txt");
-        mydp.save(minST, isp, "output_req0_minST.txt");
-        mydp.save(maxST, isp, "output_req0_maxST.txt");*/
     }
     public double[][] BS() {
         double[][] ST = new double[finalS][3];
@@ -155,10 +145,18 @@ class Simulator {
 	}
         payoffamt = unitvalue * payoffamt;
         
-        if(iscallable) output.add(calltime+"\t"+payoffamt+"\r\n");
-        else output2.add(payoffamt+"\r\n");
-        if(payoffamt>maxline) {copyST(ST,maxST); maxline = payoffamt;}
-        else if(payoffamt<minline){ copyST(ST,minST); minline = payoffamt;}
+        if(iscallable) 
+            output.add(calltime+"\t"+payoffamt+"\r\n");
+        else 
+            output2.add(payoffamt+"\r\n");
+        if(payoffamt>maxline) {
+            copyST(ST,maxST); 
+            maxline = payoffamt;
+        }
+        else if(payoffamt<minline){ 
+            copyST(ST,minST); 
+            minline = payoffamt;
+        }
     }
     public double getPrice() {return price;}
     public double getTime() {return time;}

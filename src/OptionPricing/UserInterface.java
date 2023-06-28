@@ -20,12 +20,10 @@ import javax.swing.JMenuItem;
  * @author kailun
  */
 public class UserInterface extends JFrame  implements WindowListener,ActionListener{
-    private int itemnum;
     private Dialog about;
     private JMenuBar jmb;
     private JMenu jms[];
     private JMenuItem jmis[];
-    private InputPanel iPanel;
     private Button aboutBtn;
 
     public static void main(String[] args) {
@@ -50,7 +48,7 @@ public class UserInterface extends JFrame  implements WindowListener,ActionListe
         jmb.add(jms[0]);
         jmb.add(jms[1]);
         jmis= new JMenuItem[5];
-        itemnum = 0;
+        int itemnum = 0;
         jms[0].add(jmis[itemnum++]=new JMenuItem("Setting"));
         jms[0].add(jmis[itemnum++]=new JMenuItem("Option 2"));
         jms[0].add(jmis[itemnum++]=new JMenuItem("Option 3"));
@@ -60,7 +58,7 @@ public class UserInterface extends JFrame  implements WindowListener,ActionListe
         this.setJMenuBar(jmb);
     }
     public void setInputPanel() {
-        iPanel=new InputPanel();
+        InputPanel iPanel=new InputPanel();
         this.add(iPanel);
         this.pack();
     }

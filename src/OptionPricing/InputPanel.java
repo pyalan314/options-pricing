@@ -44,7 +44,8 @@ class InputPanel extends JPanel implements ActionListener{
         for(short i=1; i<basic; i++) add(arg[i]);
 
         sim = new JButton("Simulate");
-        sim.addActionListener(this);add(sim);
+        sim.addActionListener(this);
+        add(sim);
 
         result[0] = new Item("Derivative Price", "");
         result[1] = new Item("Time Elapsed (ms)", "");
@@ -65,7 +66,8 @@ class InputPanel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==sim) {
             //DataOutput dop = new DataOutput();
-            mySim = new Simulator(arg);
+            mySim = new Simulator();
+            mySim.compute(arg);
             //result[0].setValue(myData.getPrice());
             //result[1].setValue(myData.getTime());
         }
