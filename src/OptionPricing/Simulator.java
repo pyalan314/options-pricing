@@ -26,7 +26,8 @@ class Simulator {
     //other
     private String[] mdate;
     private DataProcessor mydp;
-    private Vector ddate, cdate, output, output2;
+    private Vector<String[]> ddate, cdate;
+    private Vector<String> output, output2;
     private Random gen;
     public Simulator (Item arg[]) {
         mydp = new DataProcessor(arg[0].getText());
@@ -214,7 +215,7 @@ class Simulator {
             rho[j] = sp[j][3];
             rhosr[j] = (float) Math.sqrt(1 - rho[j]*rho[j]);
         }
-        output = new Vector(10000); output2 = new Vector(10000);
+        output = new Vector<String>(10000); output2 = new Vector<String>(10000);
         maxline = 13000; minline = 600;
         //String start = ((String[]) ddate.get(0))[0];
         //discountdate = new short[period];

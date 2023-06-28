@@ -21,11 +21,11 @@ import java.util.Vector;
  */
 
 public class DataProcessor {
-    private Vector mydata;
+    private Vector<datapair> mydata;
     private DateFormat df;
     public DataProcessor(String database) {
         df = new SimpleDateFormat("yyyy-MM-dd");
-        mydata = new Vector();
+        mydata = new Vector<datapair>();
         load(database);
     }
    public short countTotal(String date1, String date2) {
@@ -46,7 +46,7 @@ public class DataProcessor {
         catch(ParseException e) { System.out.println("error in parsing date");}
         short count = 0;
         for(short i=start; i<=end; i++) {
-            datapair tempdata = (datapair) mydata.get(i);
+            datapair tempdata = mydata.get(i);
             count += tempdata.trading;
         }
         return count;
@@ -93,8 +93,8 @@ public class DataProcessor {
         } catch (IOException e) {System.out.println("error in reading file");}
         return temp;
     }
-    public Vector loadddate(String s) {
-        Vector tempV = new Vector();
+    public Vector<String[]> loadddate(String s) {
+        Vector<String[]> tempV = new Vector<String[]>();
         String str;
         StringTokenizer st;
         File f = new File(s);
@@ -111,8 +111,8 @@ public class DataProcessor {
         } catch (IOException e) {System.out.println("error in reading file");}
         return tempV;
     }
-    public Vector loadcdate(String s) {
-        Vector tempV = new Vector();
+    public Vector<String[]> loadcdate(String s) {
+        Vector<String[]> tempV = new Vector<String[]>();
         String str;
         StringTokenizer st;
         File f = new File(s);
@@ -129,7 +129,7 @@ public class DataProcessor {
         return tempV;
     }
     public float[] loadfloat(String s) {
-        Vector tempV = new Vector();
+        Vector<Float> tempV = new Vector<Float>();
         String str;
         StringTokenizer st;
         File f = new File(s);
@@ -142,17 +142,17 @@ public class DataProcessor {
         } catch (IOException e) {System.out.println("error in reading file");}
         short size = (short) tempV.size();
         float[] temp = new float[size];
-        for(int i=0; i<size; i++) temp[i] = (Float) tempV.get(i);
+        for(int i=0; i<size; i++) temp[i] = tempV.get(i);
         return temp;
     }
-    public void save(Vector c, String filename) {
+    public void save(Vector<String> c, String filename) {
         try{
             File f = new File(filename);
             OutputStreamWriter write = new OutputStreamWriter(new FileOutputStream(f),"UTF-8");
             BufferedWriter bwriter = new BufferedWriter(write);
             String str;
             for(int j=0; j<c.size(); j++) {
-                str = (String) c.get(j);
+                str = c.get(j);
                 bwriter.write(str);
             }
             bwriter.close();

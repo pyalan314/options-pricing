@@ -13,7 +13,7 @@ import java.util.Vector;
  */
 public class DataOutput {
     DataProcessor mydp;
-    Vector ddateS, dcount;
+    Vector<String[]> ddateS, dcount;
     public DataOutput() {
         /*ddateS = new Vector();
         dcount = new Vector();
